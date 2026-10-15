@@ -68,11 +68,10 @@
   <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/brittany-signature">
 
   <!-- Critical preloads -->
-  <link rel="preload" as="image" href="assets/images/cover/cover.png" fetchpriority="high">
-  <link rel="preload" as="video" href="assets/video/reveal.mp4" type="video/mp4">
-  <link rel="preload" as="audio" href="assets/audio/inkem-inkem-.mp3" type="audio/mpeg">
-  <link rel="preload" as="image" href="assets/images/hero/hero-alt.png">
-  <link rel="preload" as="image" href="assets/images/hero/hero.png">
+  <!-- Preload critical WebP assets -->
+  <link rel="preload" as="image" href="assets/images/cover/cover.webp" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="assets/images/hero/hero-alt.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/images/hero/hero.webp" type="image/webp">
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/scenes.css">
@@ -175,9 +174,11 @@
      ============================================================ -->
   <section id="landing" class="scene--screen" aria-label="Wedding invitation cover">
     <div class="landing-media">
-      <img id="coverImg" class="cover-img section-bg" src="assets/images/cover/cover.png"
-        data-fallbacks="assets/images/cover/cover.webp,assets/images/cover/cover.jpg" alt="" decoding="async"
-        fetchpriority="high">
+      <picture>
+        <source type="image/webp" srcset="assets/images/cover/cover.webp">
+        <img id="coverImg" class="cover-img section-bg" src="assets/images/cover/cover.png"
+          alt="" decoding="async" fetchpriority="high" width="1200" height="1600">
+      </picture>
       <div class="cover-fallback" aria-hidden="true"></div>
     </div>
 
@@ -229,7 +230,7 @@
      2 · INVITATION REVEAL VIDEO
      ============================================================ -->
   <section id="reveal" aria-hidden="true">
-    <video id="revealVideo" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture
+    <video id="revealVideo" muted playsinline webkit-playsinline preload="metadata" disablepictureinpicture
       controlslist="nodownload noplaybackrate noremoteplayback">
       <source src="assets/video/reveal.mp4" type="video/mp4">
     </video>
@@ -246,10 +247,10 @@
     <!-- ---------- HERO ---------- -->
     <section id="hero" class="scene scene--screen scene--hero" aria-busy="true">
       <picture class="section-bg">
-        <source id="heroSourceAvif" type="image/avif" data-hero-srcset="assets/images/hero/hero.avif">
-        <source id="heroSourceWebp" type="image/webp" data-hero-srcset="assets/images/hero/hero.webp">
+        <source id="heroSourceWebp" type="image/webp" srcset="assets/images/hero/hero-alt.webp">
         <img id="heroImg" class="section-bg"
-          data-candidates="assets/images/hero/hero-alt.png,assets/images/hero/hero.png,assets/images/hero/hero.webp,assets/images/hero/hero.avif"
+          src="assets/images/hero/hero-alt.webp"
+          data-candidates="assets/images/hero/hero-alt.webp,assets/images/hero/hero.webp,assets/images/hero/hero-alt.png,assets/images/hero/hero.png"
           alt="" width="1080" height="1920" decoding="async" fetchpriority="high">
       </picture>
 
@@ -622,8 +623,11 @@
             <div class="venue-map-embed">
               <a href="https://www.google.com/maps/search/?api=1&query=Iverkala naduvil+Puthanambalam" target="_blank" rel="noopener"
                 aria-label="Open Bride's Residence in Google Maps">
-                <img src="assets/images/chur-bride.png" alt="Bride's Residence, Puthanambalam"
-                  style="width:100%; height:240px; object-fit:cover; display:block;" loading="lazy" decoding="async">
+                <picture>
+                  <source type="image/webp" srcset="assets/images/church-bride.webp">
+                  <img src="assets/images/church-bride.png" alt="Bride's Residence, Puthanambalam"
+                    style="width:100%; height:240px; object-fit:cover; display:block;" loading="lazy" decoding="async" width="800" height="240">
+                </picture>
               </a>
             </div>
             <div class="venue-body">
@@ -652,8 +656,11 @@
             <div class="venue-map-embed">
               <a href="https://www.google.com/maps/search/?api=1&query=Salem+Mar+Thoma+Church+Kadampanad" target="_blank" rel="noopener"
                 aria-label="Open Salem Mar Thoma Church in Google Maps">
-                <img src="assets/images/share/church1.png" alt="Salem Mar Thoma Church, Kadampanad"
-                  style="width:100%; height:240px; object-fit:cover; display:block;" loading="lazy" decoding="async">
+                <picture>
+                  <source type="image/webp" srcset="assets/images/share/church1.webp">
+                  <img src="assets/images/share/church1.png" alt="Salem Mar Thoma Church, Kadampanad"
+                    style="width:100%; height:240px; object-fit:cover; display:block;" loading="lazy" decoding="async" width="800" height="240">
+                </picture>
               </a>
             </div>
             <div class="venue-body">
@@ -682,8 +689,11 @@
             <div class="venue-map-embed">
               <a href="https://www.google.com/maps/search/?api=1&query=Nakshatra+Auditorium+Kadampanad" target="_blank" rel="noopener"
                 aria-label="Open Nakshatra Auditorium in Google Maps">
-                <img src="assets/images/Tropical Watercolor Office Facade.png" alt="Nakshatra Auditorium, Kadampanad"
-                  style="width:100%; height:240px; object-fit:cover; display:block;" loading="lazy" decoding="async">
+                <picture>
+                  <source type="image/webp" srcset="assets/images/tropical-office.webp">
+                  <img src="assets/images/Tropical Watercolor Office Facade.png" alt="Nakshatra Auditorium, Kadampanad"
+                    style="width:100%; height:240px; object-fit:cover; display:block;" loading="lazy" decoding="async" width="800" height="240">
+                </picture>
               </a>
             </div>
             <div class="venue-body">
@@ -746,11 +756,13 @@
                     style="--rot:-2.2deg;--nudge-y:14px;--scale:1;--drift-delay:0s;">
               <div class="photo-card__inner">
                 <div class="photo-card__paper">
-                  <img loading="lazy" decoding="async"
-                       src="assets/images/gallery/couples.jpeg"
-                       data-fallbacks="couples.jpeg,assets/images/gallery/couples.jpeg"
-                       data-placeholder="Renjith Raju &amp; Liji Mathew"
-                       alt="Renjith Raju and Liji Mathew together">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/gallery/couples.webp">
+                    <img loading="lazy" decoding="async"
+                         src="assets/images/gallery/couples.jpeg"
+                         data-placeholder="Renjith Raju &amp; Liji Mathew"
+                         alt="Renjith Raju and Liji Mathew together" width="900" height="1200">
+                  </picture>
                 </div>
               </div>
             </figure>
@@ -760,10 +772,13 @@
                     style="--rot:2.6deg;--nudge-y:-8px;--scale:.97;--drift-delay:.7s;">
               <div class="photo-card__inner">
                 <div class="photo-card__paper">
-                  <img loading="lazy" decoding="async"
-                       src="assets/images/gallery/couples2.jpeg"
-                       data-placeholder="Photo 02"
-                       alt="Renjith Raju and Liji Mathew — wedding portrait">
+                  <picture>
+                    <source type="image/webp" srcset="assets/images/gallery/couples2.webp">
+                    <img loading="lazy" decoding="async"
+                         src="assets/images/gallery/couples2.jpeg"
+                         data-placeholder="Photo 02"
+                         alt="Renjith Raju and Liji Mathew — wedding portrait" width="900" height="1200">
+                  </picture>
                 </div>
               </div>
             </figure>
